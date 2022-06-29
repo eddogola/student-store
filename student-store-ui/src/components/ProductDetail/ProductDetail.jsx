@@ -3,10 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom"
 import "./ProductDetail.css"
 
-export default function ProductDetail({ allProducts, handleAddItemToCart, handleRemoveItemToCart }) {
+export default function ProductDetail({ allProducts, handleAddItemToCart, handleRemoveItemToCart, setError }) {
     const { productId } = useParams();
     const [isFetching, setIsFetching] = React.useState(true);
-    const [error, setError] = React.useState("");
     // const product = allProducts.find((product) => product.id === parseInt(productId))
     const [product, setProduct] = React.useState({});
 

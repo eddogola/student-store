@@ -97,6 +97,7 @@ export default function App() {
                     <Sidebar
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
+                        setError={ setError }
                     />
                     <Routes>
                         <Route
@@ -118,7 +119,7 @@ export default function App() {
                         <Route
                             path="products/:productId"
                             element={
-                                <ProductDetail allProducts={allProducts} />
+                                <ProductDetail allProducts={allProducts} setError={ setError } />
                             }
                         />
                         <Route path="*" element={<NotFound />} />
