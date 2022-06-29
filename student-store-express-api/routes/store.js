@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:productId', (req, res) => {
-	const productId = req.params.productId;
+	const productId = parseInt(req.params.productId);
 	const product = Store.get_product(productId);
 
 	res.status(200).send({'product': product});
