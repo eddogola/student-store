@@ -8,7 +8,7 @@ export default function Sidebar({ isOpen, setError, shoppingCart, products, allP
     <section className="sidebar">
       <div className="shopping-cart">
         <ShoppingCart shoppingCart={ shoppingCart } allProducts={ allProducts }/>
-        <CheckoutForm shoppingCart={ shoppingCart } setError={ setError } />
+        <CheckoutForm handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm } shoppingCart={ shoppingCart } />
       </div>
     </section>
   )

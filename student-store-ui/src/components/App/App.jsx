@@ -89,6 +89,33 @@ export default function App() {
         }
     }
 
+    function handleOnSubmit(event) {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+
+        const postObject = {
+            'shoppingCart': shoppingCart,
+            'user': {
+                'name': name,
+                'email': email,
+            }
+        }
+
+        const postData = async () => {
+            try {
+                await axios.post('http://localhost:3001/store', postObject);
+                // set purchases
+            } catch (e) {
+                setError(e);
+            }
+        };
+
+        postData();
+    
+        event.target.reset();
+    }
+
     return (
         <div className="app">
             <BrowserRouter>
@@ -97,7 +124,7 @@ export default function App() {
                     <Sidebar
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
-                        setError={ setError }
+                        handleOnSubmitCheckoutForm={ handleOnSubmit }
                     />
                     <Routes>
                         <Route
