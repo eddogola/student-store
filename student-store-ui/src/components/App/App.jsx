@@ -8,8 +8,6 @@ import NotFound from "../NotFound/NotFound";
 import Home from "../Home/Home";
 import "./App.css";
 
-const API_URL = "https://codepath-store-api.herokuapp.com/store";
-
 export default function App() {
     // an array of product objects that is initially empty.
     const [products, setProducts] = React.useState([]);
@@ -36,7 +34,7 @@ export default function App() {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(API_URL);
+                const response = await axios.get("http://localhost:3001/store");
                 if (isFetching) {
                     setProducts(response.data.products);
                     setAllProducts(response.data.products);
