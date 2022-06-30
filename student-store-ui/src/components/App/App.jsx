@@ -22,6 +22,7 @@ export default function App() {
     const [shoppingCart, setShoppingCart] = React.useState([]);
     // the user's information that will be sent to the API when they checkout.
     const [checkoutForm, setCheckoutForm] = React.useState(false);
+    const [purchase, setPurchase] = React.useState({});
 
     const categories = [
         "All categories",
@@ -112,8 +113,11 @@ export default function App() {
         };
 
         postData();
-    
+        setPurchase(postObject);
+        
+        // clean up
         event.target.reset();
+        setShoppingCart([])
     }
 
     return (
@@ -125,6 +129,8 @@ export default function App() {
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
                         handleOnSubmitCheckoutForm={ handleOnSubmit }
+                        purchase={ purchase }
+                        setPurchase={ setPurchase }
                     />
                     <Routes>
                         <Route
