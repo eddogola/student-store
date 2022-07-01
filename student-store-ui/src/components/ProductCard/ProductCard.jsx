@@ -4,7 +4,7 @@ import "./ProductCard.css"
 
 export default function ProductCard({ product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, showDescription, shoppingCart }) {
     const description = <div className="row">
-            <p>{ product.description }</p>
+            <p className="product-description">{ product.description }</p>
         </div>;
     return (
         <div className="product-card card col-lg-3 col-md-4 col-sm-6">
