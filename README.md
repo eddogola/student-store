@@ -77,10 +77,10 @@ The following specifications were met on the Express backend and the React front
         - [x] It should decrease the quantity of the item in the `shoppingCart` by `1`, but only if it already exists.
         - [x] If it doesn't exist, the function should do nothing.
         - [x] If the new quantity is `0`, it should remove the item from the `shoppingCart`
-      - [ ] The **`handleOnCheckoutFormChange`** function. When called...
-        - [ ] It should receive two arguments:
-          - [ ] `name` - the `name` attribute of the input being updated
-          - [ ] `value` - the new value to set for that input
+      - [x] The **`handleOnCheckoutFormChange`** function. When called...
+        - [x] It should receive two arguments:
+          - [x] `name` - the `name` attribute of the input being updated
+          - [x] `value` - the new value to set for that input
         - [ ] It should update the `checkoutForm` object with the new value from the correct input(s)
       - [x] The **`handleOnSubmitCheckoutForm`** function. When called...
         - [x] It should submit the user's order to the API

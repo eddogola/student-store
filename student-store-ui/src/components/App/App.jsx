@@ -90,7 +90,7 @@ export default function App() {
         }
     }
 
-    function handleOnSubmit(event) {
+    function handleOnSubmitCheckoutForm(event) {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
@@ -120,6 +120,10 @@ export default function App() {
         setShoppingCart([])
     }
 
+    function handleOnCheckoutFormChange(name, value) {
+        
+    }
+
     return (
         <div className="app">
             <BrowserRouter>
@@ -128,7 +132,8 @@ export default function App() {
                     <Sidebar
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
-                        handleOnSubmitCheckoutForm={ handleOnSubmit }
+                        handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm }
+                        handleOnCheckoutFormChange={ handleOnCheckoutFormChange }
                         purchase={ purchase }
                         setPurchase={ setPurchase }
                     />
