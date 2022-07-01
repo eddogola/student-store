@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen, setError, shoppingCart, products, allP
   return (
     <section className="sidebar">
       <div className="shopping-cart">
-        <ShoppingCart shoppingCart={ shoppingCart } allProducts={ allProducts }/>
+        <ShoppingCart shoppingCart={ shoppingCart } products={ allProducts }/>
         <CheckoutForm handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm } handleOnCheckoutFormChange={ handleOnCheckoutFormChange } 
         shoppingCart={ shoppingCart } />
         <CheckoutInfo purchase={ purchase } setPurchase={ setPurchase } allProducts={ allProducts } />

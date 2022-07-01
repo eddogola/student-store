@@ -1,10 +1,10 @@
 import * as React from "react"
 import "./ShoppingCart.css"
 
-export function ShoppingCart({ shoppingCart, allProducts }) {
+export function ShoppingCart({ isOpen, shoppingCart, products }) {
     if (shoppingCart.length === 0) {
       return (
-        <div className="shopping-cart-content">      
+        <div className="notification">      
         <p>No items aded to cart yet. Start shopping now!</p>
       </div>
       )
@@ -12,7 +12,7 @@ export function ShoppingCart({ shoppingCart, allProducts }) {
       let subTotal = 0.0
       let cartProducts = []
       shoppingCart.forEach(cartItem => {
-        let product = allProducts.find((prod) => prod.id === cartItem['itemId'])
+        let product = products.find((prod) => prod.id === cartItem['itemId'])
         product['quantity'] = cartItem['quantity']
         cartProducts.push(product)
         subTotal += product.price * cartItem['quantity']
@@ -22,7 +22,7 @@ export function ShoppingCart({ shoppingCart, allProducts }) {
       const total = (subTotal + taxes).toFixed(2)
   
       return (
-        <div className="shopping-cart-content">
+        <div className="shopping-cart">
           <table>
             <thead>
               <tr>
