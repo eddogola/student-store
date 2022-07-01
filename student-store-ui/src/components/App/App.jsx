@@ -92,9 +92,7 @@ export default function App() {
 
     function handleOnSubmitCheckoutForm(event) {
         event.preventDefault();
-        // const name = event.target.name.value;
         const name = checkoutForm.name;
-        // const email = event.target.email.value;
         const email = checkoutForm.email;
 
         const postObject = {
@@ -118,7 +116,7 @@ export default function App() {
         setPurchase(postObject);
         
         // clean up
-        event.target.reset();
+        setCheckoutForm({name:'', email:''})
         setShoppingCart([])
     }
 
