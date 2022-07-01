@@ -13,8 +13,11 @@ export default function Sidebar({ isOpen, setError, shoppingCart, products, allP
       <div className="shopping-cart">
         <ShoppingCart shoppingCart={ shoppingCart } products={ allProducts }/>
         <CheckoutForm handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm } handleOnCheckoutFormChange={ handleOnCheckoutFormChange } 
-        shoppingCart={ shoppingCart } />
-        <CheckoutInfo purchase={ purchase } setPurchase={ setPurchase } allProducts={ allProducts } />
+        shoppingCart={ shoppingCart } checkoutForm={ checkoutForm }/>
+        <CheckoutInfo isOpen={ isOpen } shoppingCart={ shoppingCart } checkoutForm={ checkoutForm }
+        handleOnCheckoutFormChange={ handleOnCheckoutFormChange }
+        handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm } 
+        purchase={ purchase } setPurchase={ setPurchase } allProducts={ allProducts } />
       </div>
     </section>
   )

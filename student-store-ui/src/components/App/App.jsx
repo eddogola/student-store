@@ -21,7 +21,7 @@ export default function App() {
     // should store state for the active user's shopping cart (items they want to purchase and the quantity of each item).
     const [shoppingCart, setShoppingCart] = React.useState([]);
     // the user's information that will be sent to the API when they checkout.
-    const [checkoutForm, setCheckoutForm] = React.useState(false);
+    const [checkoutForm, setCheckoutForm] = React.useState({name: '', email:''});
     const [purchase, setPurchase] = React.useState({});
 
     const categories = [
@@ -92,8 +92,10 @@ export default function App() {
 
     function handleOnSubmitCheckoutForm(event) {
         event.preventDefault();
-        const name = event.target.name.value;
-        const email = event.target.email.value;
+        // const name = event.target.name.value;
+        const name = checkoutForm.name;
+        // const email = event.target.email.value;
+        const email = checkoutForm.email;
 
         const postObject = {
             'shoppingCart': shoppingCart,
@@ -121,7 +123,20 @@ export default function App() {
     }
 
     function handleOnCheckoutFormChange(name, value) {
-        
+        // if the name is not in checkout form, add it with its value
+        if(!(name in checkoutForm)) {
+            setCheckoutForm({...checkoutForm, ...{[name]: value}});
+        } 
+        // if the name is in the checkout form, update its value
+        else {
+            const restOfCheckoutForm = Object.keys(checkoutForm)
+                                                .filter(key => key != name)
+                                                .reduce((obj, key) => {
+                                                    obj[key] = checkoutForm[key];
+                                                    return obj;
+                                                }, {})
+            setCheckoutForm({...restOfCheckoutForm, ...{[name]:value}})
+        }
     }
 
     return (
@@ -136,6 +151,7 @@ export default function App() {
                         handleOnCheckoutFormChange={ handleOnCheckoutFormChange }
                         purchase={ purchase }
                         setPurchase={ setPurchase }
+                        checkoutForm={ checkoutForm }
                     />
                     <Routes>
                         <Route
