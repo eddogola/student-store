@@ -139,11 +139,11 @@ The following specifications were met on the Express backend and the React front
     - `handleRemoveItemToCart` - handler function defined in the `App.jsx` component
   - [x] Should define **at least** a `product` state variable and updater
   - [x] It should leverage the `useParams` hook from `react-router-dom` to extract the `productId` param from the url.
-  - [ ] When the component is mounted to the screen...
-    - [ ] It should make a `GET` request to the `/store/:productId` endpoint with the `axios.get` method.
-    - [ ] The `:productId` part of the request should be replaced with the `productId` pulled from the url.
+  - [x] When the component is mounted to the screen...
+    - [x] It should make a `GET` request to the `/store/:productId` endpoint with the `axios.get` method.
+    - [x] The `:productId` part of the request should be replaced with the `productId` pulled from the url.
     - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
-    - [ ] It should store the `product` received by the request in state and then render the `ProductView` component.
+    - [x] It should store the `product` received by the request in state and then render the `ProductView` component.
     - [ ] If no `product` is found with that `id`, it should render the `NotFound` component
 
 **ProductView.jsx**
@@ -156,7 +156,7 @@ The following specifications were met on the Express backend and the React front
     - `handleAddItemToCart` - handler function
     - `handleRemoveItemToCart` - handler function
   - [x] It should display an `h1` element with the `className` of `product-id` that contains the text: `Product #` followed by the `productId` prop
-  - [ ] It should render a `ProductCard` component and pass it the props it needs. It should also set the `showDescription` prop to `true` for this product card.
+  - [x] It should render a `ProductCard` component and pass it the props it needs. It should also set the `showDescription` prop to `true` for this product card.
 
 **ProductCard.jsx**
 

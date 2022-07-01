@@ -157,7 +157,7 @@ export default function App() {
                         <Route
                             path="products/:productId"
                             element={
-                                <ProductDetail allProducts={allProducts} setError={ setError } />
+                                <ProductDetail shoppingCart={ shoppingCart } setError={ setError } />
                             }
                         />
                         <Route path="*" element={<NotFound />} />
