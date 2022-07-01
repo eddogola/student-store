@@ -27,7 +27,7 @@ export default function CheckoutInfo({ purchase, setPurchase, allProducts }) {
                 <h1>Checkout Info</h1>
                 <div className="receipt">
                     <h3>Receipt</h3>
-                    <p>Showing receipt for { purchase.user.name } available at { purchase.user.email }:</p>
+                    <p className='success'>Success! Showing receipt for { purchase.user.name } available at { purchase.user.email }:</p>
                     <ul>
                         { cartProducts.map((product, idx) => <li key={`${idx}`}>{ product.quantity } total { product.name } 
                         purchased at a cost of ${ product.price } for a total cost of ${ (product.price * product.quantity).toFixed(2) }</li> ) }
