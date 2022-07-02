@@ -16,7 +16,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [x] User can search for products.
 - [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
-- [ ] User can click to expand the shopping cart in the left navigation.
+- [x] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
 - [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
@@ -64,7 +64,7 @@ The following specifications were met on the Express backend and the React front
             it should create an error message and store it in the `error` state variable.
   - [x] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
     - [x] Define as many as are needed.
-    - [ ] At minimum, **create these five handlers**:
+    - [x] At minimum, **create these five handlers**:
       - [x] The **`handleOnToggle`** function. When called...
         - [x] It should toggle the open/closed state of the `Sidebar`.
       - [x] The **`handleAddItemToCart`** function. When called...
@@ -81,7 +81,7 @@ The following specifications were met on the Express backend and the React front
         - [x] It should receive two arguments:
           - [x] `name` - the `name` attribute of the input being updated
           - [x] `value` - the new value to set for that input
-        - [ ] It should update the `checkoutForm` object with the new value from the correct input(s)
+        - [x] It should update the `checkoutForm` object with the new value from the correct input(s)
       - [x] The **`handleOnSubmitCheckoutForm`** function. When called...
         - [x] It should submit the user's order to the API
         - [x] To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
@@ -120,7 +120,7 @@ The following specifications were met on the Express backend and the React front
 
   - [x] Should render JSX that is wrapped by a `div` element with a `className` of `hero`
   - [x] Should display an intro message inside an element with the `className` of `intro`. That message should contain the text `"Welcome!"` somewhere within it.
-  - [ ] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
+  - [x] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
 
 **ProductGrid.jsx**
 
@@ -220,7 +220,7 @@ The following specifications were met on the Express backend and the React front
     - `handleOnCheckoutFormChange` - handler function to update the `checkoutForm`
     - `handleOnSubmitCheckoutForm` - handler function to submit the user's order to the API
   - [x] Should render two `input` elements, each with the `className` of `checkout-form-input`
-    - [ ] The `checkoutForm` prop should supply the correct props needed to create the two controlled inputs:
+    - [x] The `checkoutForm` prop should supply the correct props needed to create the two controlled inputs:
       - [x] The first input should have:
         - [x] the `type` prop set to `email`
         - [x] the `name` prop set to `email`
@@ -243,7 +243,7 @@ The following specifications were met on the Express backend and the React front
         - [x] The `checkoutForm` should be reset to its default state.
 
 **Server** - Create an Express server
-  - [ ] Wire up the appropriate middleware and error handlers in the `app.js` file
+  - [x] Wire up the appropriate middleware and error handlers in the `app.js` file
   - [x] Create a single `GET` request handler at the `/` endpoint. It should respond to all `GET` requests with a JSON object and a `200` status code. The JSON response should contain a single key of `ping` that stores the string value: `pong`. For example: `{ "ping": "pong" }`.
   - [x] Have a `server.js` file that starts the app by listening on port `3001`.
 
@@ -286,15 +286,15 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-The 
+The bank lab helped me understand how to wire a custom backend with my frontend, and get familiar with lowdb which was helpful in beginning the second part of this project.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have implemented the rest of the stretch features.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+The demo looks fine to me. I figure I maybe could've made it look better aesthetically.
 
 ### Open-source libraries used
 
