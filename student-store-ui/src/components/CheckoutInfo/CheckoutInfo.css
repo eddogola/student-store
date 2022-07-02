@@ -1,0 +1,13 @@
+.checkout-button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px #fff solid;
+    border-radius: 6px;
+}
+
+.exit-button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px #fff solid;
+    border-radius: 5px;
+}

@@ -8,8 +8,6 @@ import NotFound from "../NotFound/NotFound";
 import Home from "../Home/Home";
 import "./App.css";
 
-const API_URL = "https://codepath-store-api.herokuapp.com/store";
-
 export default function App() {
     // an array of product objects that is initially empty.
     const [products, setProducts] = React.useState([]);
@@ -23,7 +21,8 @@ export default function App() {
     // should store state for the active user's shopping cart (items they want to purchase and the quantity of each item).
     const [shoppingCart, setShoppingCart] = React.useState([]);
     // the user's information that will be sent to the API when they checkout.
-    const [checkoutForm, setCheckoutForm] = React.useState(false);
+    const [checkoutForm, setCheckoutForm] = React.useState({name: '', email:''});
+    const [purchase, setPurchase] = React.useState({});
 
     const categories = [
         "All categories",
@@ -36,7 +35,7 @@ export default function App() {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(API_URL);
+                const response = await axios.get("http://localhost:3001/store");
                 if (isFetching) {
                     setProducts(response.data.products);
                     setAllProducts(response.data.products);
@@ -91,6 +90,57 @@ export default function App() {
         }
     }
 
+    function handleOnSubmitCheckoutForm(event) {
+        event.preventDefault();
+        const name = checkoutForm.name;
+        const email = checkoutForm.email;
+
+        const postObject = {
+            'shoppingCart': shoppingCart,
+            'user': {
+                'name': name,
+                'email': email,
+            }
+        }
+
+        const postData = async () => {
+            try {
+                await axios.post('http://localhost:3001/store', postObject);
+                // set purchases
+            } catch (e) {
+                setError(e);
+            }
+        };
+
+        postData();
+        setPurchase(postObject);
+        
+        // clean up
+        setCheckoutForm({name:'', email:''})
+        setShoppingCart([])
+    }
+
+    function handleOnCheckoutFormChange(name, value) {
+        // if the name is not in checkout form, add it with its value
+        if(!(name in checkoutForm)) {
+            setCheckoutForm({...checkoutForm, ...{[name]: value}});
+        } 
+        // if the name is in the checkout form, update its value
+        else {
+            const restOfCheckoutForm = Object.keys(checkoutForm)
+                                                .filter(key => key != name)
+                                                .reduce((obj, key) => {
+                                                    obj[key] = checkoutForm[key];
+                                                    return obj;
+                                                }, {})
+            setCheckoutForm({...restOfCheckoutForm, ...{[name]:value}})
+        }
+    }
+
+    function handleOnToggle() {
+        setIsOpen(!isOpen);
+    }
+
     return (
         <div className="app">
             <BrowserRouter>
@@ -99,6 +149,13 @@ export default function App() {
                     <Sidebar
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
+                        isOpen={ isOpen }
+                        handleOnToggle={ handleOnToggle }
+                        handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm }
+                        handleOnCheckoutFormChange={ handleOnCheckoutFormChange }
+                        purchase={ purchase }
+                        setPurchase={ setPurchase }
+                        checkoutForm={ checkoutForm }
                     />
                     <Routes>
                         <Route
@@ -120,7 +177,8 @@ export default function App() {
                         <Route
                             path="products/:productId"
                             element={
-                                <ProductDetail allProducts={allProducts} />
+                                <ProductDetail shoppingCart={ shoppingCart } setError={ setError } 
+                                handleAddItemToCart={ handleAddItemToCart } handleRemoveItemFromCart={ handleRemoveItemFromCart }/>
                             }
                         />
                         <Route path="*" element={<NotFound />} />
