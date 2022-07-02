@@ -2,9 +2,11 @@ import * as React from "react"
 import "./ShoppingCart.css"
 
 export function ShoppingCart({ isOpen, shoppingCart, products }) {
+    const shoppingCartTitle = <h2>Shopping Cart <span className="bi bi-cart"></span></h2>
     if (shoppingCart.length === 0) {
       return (
         <div className="notification">      
+        { shoppingCartTitle }
         <p>No items aded to cart yet. Start shopping now!</p>
       </div>
       )
@@ -23,6 +25,7 @@ export function ShoppingCart({ isOpen, shoppingCart, products }) {
   
       return (
         <div className="shopping-cart">
+          { shoppingCartTitle }
           <table>
             <thead>
               <tr>

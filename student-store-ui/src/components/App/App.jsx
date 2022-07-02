@@ -137,6 +137,10 @@ export default function App() {
         }
     }
 
+    function handleOnToggle() {
+        setIsOpen(!isOpen);
+    }
+
     return (
         <div className="app">
             <BrowserRouter>
@@ -145,6 +149,8 @@ export default function App() {
                     <Sidebar
                         shoppingCart={shoppingCart}
                         allProducts={allProducts}
+                        isOpen={ isOpen }
+                        handleOnToggle={ handleOnToggle }
                         handleOnSubmitCheckoutForm={ handleOnSubmitCheckoutForm }
                         handleOnCheckoutFormChange={ handleOnCheckoutFormChange }
                         purchase={ purchase }
@@ -171,7 +177,8 @@ export default function App() {
                         <Route
                             path="products/:productId"
                             element={
-                                <ProductDetail shoppingCart={ shoppingCart } setError={ setError } />
+                                <ProductDetail shoppingCart={ shoppingCart } setError={ setError } 
+                                handleAddItemToCart={ handleAddItemToCart } handleRemoveItemFromCart={ handleRemoveItemFromCart }/>
                             }
                         />
                         <Route path="*" element={<NotFound />} />
